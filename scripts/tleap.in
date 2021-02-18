@@ -1,0 +1,4 @@
+source leaprc.gaff
+mol = loadmol2 polymer.mol2
+saveamberparm mol polymer.prmtop polymer.inpcrd
+quit
