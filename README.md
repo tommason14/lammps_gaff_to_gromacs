@@ -5,9 +5,9 @@ Takes the output of a LAMMPS polymer simulation with the GAFF forcefield and con
 Requirements:
 - Openbabel
 - Ambertools, for tleap
-- python3
-
-Firstly, store the python and shell scripts in a directory found in your $PATH variable.
+- Python3 (using the Ovito and ParmEd modules)
+ 
+Firstly, store the python and shell scripts in a directory found in your $PATH variable. Also edit the path to the tleap and tleap_input variables inside `lammps_to_gromacs_gaff_create_top.sh`.
 
 # First steps
 
