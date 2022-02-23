@@ -65,3 +65,29 @@ To add parameters for sodium, chloride and water simulated using the TIP4P model
 
 If you wish to add other molecules, the itp information of the polymer needs to be extracted from the topology file generated.
 To do this, run `top_to_itp.sh polymer.top polymer.itp` and then add other molecules to the topology file as desired.
+
+# Possible issues
+
+Sometimes Ambertools prints incorrect atom names. To work around this, save a pdb before writing the prmtop file, and then assign atom names from the pdb with parmed.
+
+```
+# tleap.in
+source leaprc.gaff
+mol = loadmol2 polymer.mol2
+savepdb mol polymer.pdb
+saveamberparm mol polymer.prmtop polymer.inpcrd
+quit
+```
+
+```
+# amber_to_gmx.py
+import parmed as pmd
+p = pmd.load_file('polymer.prmtop', xyz='polymer.pdb')
+
+pdb = pmd.load_file('polymer.pdb')
+for old, new in zip(p.atoms, pdb.atoms):
+    old.name = new.name
+
+p.save('conf.gro')
+p.save('topol.top')
+```
