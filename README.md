@@ -68,7 +68,7 @@ To do this, run `top_to_itp.sh polymer.top polymer.itp` and then add other molec
 
 # Possible issues
 
-Sometimes Ambertools prints incorrect atom names. To work around this, save a pdb before writing the prmtop file, and then assign atom names from the pdb with parmed.
+Sometimes Parmed fails to read atom names correctly when converting large systems, which can give errors when running `gmx grompp` and also when post-processing trajectories. To fix this, save a pdb before writing the prmtop file, and then assign atom names from the pdb with parmed. After this, atom names in the GRO file will be correct.
 
 ```
 # tleap.in
